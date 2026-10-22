@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareQueue | Hospital Emergency Management</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero"><div class="brand">✚ CareQueue</div><div><h1>Hospital Emergency Management System</h1><p>Register patients, prioritize emergencies, and maintain patient records.</p></div></header>
+  <main class="layout">
+    <section class="panel">
+      <h2>Patient Registration</h2>
+      <form id="patientForm">
+        <label for="patientName">Patient name</label><input id="patientName" required maxlength="60" placeholder="Enter patient name">
+        <label for="age">Age</label><input id="age" type="number" min="0" max="120" required placeholder="Age in years">
+        <label for="condition">Condition / reason</label><input id="condition" required maxlength="100" placeholder="e.g. chest pain, fever">
+        <label for="priority">Priority</label>
+        <select id="priority" required><option value="normal">Normal</option><option value="urgent">Urgent</option><option value="emergency">Emergency</option></select>
+        <button type="submit">Register patient</button>
+      </form>
+      <p class="hint">Demo only: this project is for academic use, not real clinical triage.</p>
+    </section>
+    <section class="panel">
+      <div class="section-head"><h2>Waiting Patients</h2><span id="waitingCount" class="pill">0 patients</span></div>
+      <p class="hint">Emergency → Urgent → Normal. Within each priority, patients follow FIFO order.</p>
+      <div id="waitingEmpty" class="empty">No patients are waiting.</div>
+      <div class="table-wrap"><table id="waitingTable" hidden><thead><tr><th>ID</th><th>Patient</th><th>Age</th><th>Condition</th><th>Priority</th><th>Action</th></tr></thead><tbody id="waitingBody"></tbody></table></div>
+    </section>
+    <section class="panel">
+      <div class="section-head"><h2>Patient Records</h2><div class="actions"><input id="searchRecords" aria-label="Search patient records" placeholder="Search records"><button id="clearRecords" class="secondary" type="button">Clear completed</button></div></div>
+      <div id="recordsEmpty" class="empty">Registered patients will appear here.</div>
+      <div class="table-wrap"><table id="recordsTable" hidden><thead><tr><th>ID</th><th>Patient</th><th>Condition</th><th>Priority</th><th>Status</th><th>Registered</th></tr></thead><tbody id="recordsBody"></tbody></table></div>
+    </section>
+  </main>
+  <footer>Mini Project • Priority Queue + Linked List (record model) • Browser-based demonstration</footer>
+  <script src="app.js"></script>
+</body></html>
