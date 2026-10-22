@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite | Online Food Processing System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="brand">🍽️ QuickBite</div>
+    <div>
+      <h1>Online Food Processing System</h1>
+      <p>Place orders, track preparation, and complete orders using a FIFO queue.</p>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="panel">
+      <h2>Place an Order</h2>
+      <form id="orderForm">
+        <label for="customerName">Customer name</label>
+        <input id="customerName" name="customerName" required maxlength="60" placeholder="e.g. Asha">
+        <label for="foodItem">Food item</label>
+        <select id="foodItem" name="foodItem" required>
+          <option value="">Select an item</option>
+          <option>Veg Sandwich</option><option>Pizza</option><option>Veg Burger</option>
+          <option>Pasta</option><option>Masala Dosa</option><option>Tea / Coffee</option>
+        </select>
+        <label for="quantity">Quantity</label>
+        <input id="quantity" name="quantity" type="number" min="1" max="20" value="1" required>
+        <button type="submit">Add to order queue</button>
+      </form>
+      <p class="hint">Orders are processed in the order received (First In, First Out).</p>
+    </section>
+    <section class="panel">
+      <div class="section-head"><h2>Current Order Queue</h2><span id="queueCount" class="pill">0 orders</span></div>
+      <div id="queueEmpty" class="empty">No orders yet. Add an order to begin.</div>
+      <div class="table-wrap"><table id="ordersTable" hidden>
+        <thead><tr><th>Order</th><th>Customer</th><th>Item</th><th>Qty</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="ordersBody"></tbody>
+      </table></div>
+    </section>
+    <section class="panel">
+      <div class="section-head"><h2>Completed Orders</h2><button id="clearCompleted" class="secondary" type="button">Clear history</button></div>
+      <div id="completedEmpty" class="empty">Completed orders will appear here.</div>
+      <div class="table-wrap"><table id="completedTable" hidden>
+        <thead><tr><th>Order</th><th>Customer</th><th>Item</th><th>Qty</th><th>Completed at</th></tr></thead>
+        <tbody id="completedBody"></tbody>
+      </table></div>
+    </section>
+  </main>
+  <footer>Mini Project • Data Structure: Queue (FIFO) • Data is stored in this browser session.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
